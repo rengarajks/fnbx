@@ -29,6 +29,23 @@ const Section2 = () => {
 
 
   useEffect(()=>{
+
+
+
+
+    const webgazer=window.webgazer
+    webgazer.setGazeListener((data,clock)=>{
+      console.log(data,clock)
+      setA(data.x)
+      setB(data.y)
+
+    }).begin()
+
+
+
+
+
+
     const cursor = document.getElementById('cursor');
 
     // Function to move the cursor to the specified coordinates
@@ -47,8 +64,7 @@ const Section2 = () => {
       const x = centerX + Math.cos(angle) * radius;
       const y = centerY + Math.sin(angle) * radius;
 
-      setA(x)
-      setB(y)
+     
   
       moveCursor(x, y);
   
@@ -211,7 +227,9 @@ const Section2 = () => {
               src="/youtubeplaceholder2b05e7d68dsvg.svg"
             />
         
-            <div id="cursor"></div>
+            <div id="cursor" style={{ 
+        transform: `translate(${a}px, ${b}px)` 
+    }}></div>
           </div>
         </div>
         <div className="frame12">
